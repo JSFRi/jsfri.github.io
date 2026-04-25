@@ -38,7 +38,8 @@ section[id] {
   height: 210px;
   max-width: 100%;
   object-fit: cover;
-  object-position: center center;
+  /* Slightly left of center reframes the crop (tweak 40–50% if needed) */
+  object-position: 43% center;
   border-radius: 50%;
 }
 
