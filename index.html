@@ -3,32 +3,145 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>jsfri</title>
+  <title>Your Name — Academic homepage</title>
+  <meta name="description" content="Academic personal homepage">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-  <style>
-    body { font-family: "Lato", sans-serif; }
-    .hero { min-height: 70vh; }
-  </style>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="css/site.css" rel="stylesheet">
 </head>
-<body class="bg-light">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand" href="./">jsfri</a>
+<body class="bg-white">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top site-navbar">
+    <div class="container-fluid px-3 px-lg-4">
+      <a class="navbar-brand fw-semibold" href="#page-top">Your Name</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNav" aria-controls="topNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="topNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small text-uppercase gap-lg-2">
+          <li class="nav-item"><a class="nav-link" href="#introduction">Introduction</a></li>
+          <li class="nav-item"><a class="nav-link" href="#publications">Publications</a></li>
+          <li class="nav-item"><a class="nav-link" href="#talks">Talks</a></li>
+          <li class="nav-item"><a class="nav-link" href="#teaching">Teaching</a></li>
+          <li class="nav-item"><a class="nav-link" href="#cv">CV</a></li>
+        </ul>
+      </div>
     </div>
   </nav>
 
-  <main class="container hero d-flex flex-column justify-content-center py-5">
-    <h1 class="display-5 fw-normal mb-3">Site placeholder</h1>
-    <p class="lead text-secondary col-lg-8">
-      Replace this page with your content. Add more HTML pages and a <code>css/</code> folder as you like;
-      keep links <strong>relative</strong> (e.g. <code>href="about.html"</code>) so the same files work on GitHub Pages and later on an org server.
-    </p>
-    <p class="text-secondary small col-lg-8">
-      User-site URL (after you enable Pages and push): <code>https://jsfri.github.io/</code>
-    </p>
-  </main>
+  <div id="page-top" class="pt-5"></div>
+
+  <div class="container-fluid px-0">
+    <div class="row g-0">
+      <!-- Sidebar ~1/3 -->
+      <aside class="col-lg-4 sidebar py-4 py-lg-5 px-4 px-lg-5">
+        <div class="sidebar-sticky">
+          <img class="portrait rounded-circle d-block mx-auto mx-lg-0 mb-3" src="img/portrait.svg" width="160" height="160" alt="Portrait">
+          <p class="sidebar-name text-center text-lg-start mb-1">Your Name</p>
+          <p class="sidebar-title text-center text-lg-start mb-3">Your role / one-line title</p>
+          <p class="small text-secondary text-center text-lg-start mb-4">
+            Short biography for the sidebar. Replace with a few sentences about your research interests and affiliation.
+          </p>
+
+          <ul class="list-unstyled small sidebar-links mb-0">
+            <li class="mb-2">
+              <i class="bi bi-geo-alt me-2"></i>City, Country
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-building me-2"></i>Your organization
+            </li>
+            <li class="mb-2">
+              <a href="mailto:you@example.edu"><i class="bi bi-envelope me-2"></i>Email</a>
+            </li>
+            <li class="mb-2">
+              <a href="https://scholar.google.com/citations?user=REPLACE_ME" rel="noopener noreferrer"><i class="bi bi-mortarboard me-2"></i>Google Scholar</a>
+            </li>
+            <li class="mb-2">
+              <a href="https://www.linkedin.com/in/REPLACE_ME/" rel="noopener noreferrer"><i class="bi bi-linkedin me-2"></i>LinkedIn</a>
+            </li>
+            <li class="mb-2">
+              <a href="https://github.com/jsfri" rel="noopener noreferrer"><i class="bi bi-github me-2"></i>GitHub</a>
+            </li>
+            <li class="mb-2">
+              <a href="https://orcid.org/0000-0000-0000-0000" rel="noopener noreferrer"><i class="bi bi-person-badge me-2"></i>ORCID</a>
+            </li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- Main ~2/3 -->
+      <main class="col-lg-8 py-4 py-lg-5 px-4 px-lg-5 main-content">
+        <section id="introduction">
+          <h1>Introduction</h1>
+          <p>
+            This site follows a layout similar to
+            <a href="https://academicpages.github.io/" rel="noopener noreferrer">Academic Pages</a>:
+            a fixed top menu, a left profile column, and sectioned content on the right. Edit this file
+            (<code>index.html</code>) and <code>css/site.css</code> to match your information. Replace
+            <code>img/portrait.svg</code> with your photo (for example <code>img/photo.jpg</code>) if you prefer.
+          </p>
+          <p>
+            Use relative links for assets and internal pages so the same tree deploys cleanly on
+            <code>https://jsfri.github.io/</code> and later on an institutional host.
+          </p>
+        </section>
+
+        <section id="publications">
+          <h2>Publications</h2>
+          <article class="pub-item">
+            <p class="title mb-1">Paper Title One: A Template Entry</p>
+            <p class="meta mb-0">Your Name, Coauthor A, Coauthor B. <em>Venue Abbreviation</em>, Year. <a href="#">PDF</a> · <a href="#">DOI</a></p>
+          </article>
+          <article class="pub-item">
+            <p class="title mb-1">Paper Title Two</p>
+            <p class="meta mb-0">Your Name and Others. <em>Conference / Journal</em>, Year. <a href="#">arXiv</a></p>
+          </article>
+          <p class="small text-secondary mt-3">Duplicate the <code>&lt;article class="pub-item"&gt;</code> blocks for each publication.</p>
+        </section>
+
+        <section id="talks">
+          <h2>Talks</h2>
+          <article class="talk-item">
+            <p class="title mb-1">Talk title (template)</p>
+            <p class="meta mb-0">Event name, Location · Month Year · <a href="#">Slides</a></p>
+          </article>
+          <article class="talk-item">
+            <p class="title mb-1">Another invited talk</p>
+            <p class="meta mb-0">University seminar (virtual) · Year</p>
+          </article>
+        </section>
+
+        <section id="teaching">
+          <h2>Teaching</h2>
+          <ul>
+            <li><strong>Semester Year</strong> — Course code: Course name (role: TA / instructor)</li>
+            <li><strong>Semester Year</strong> — Another course</li>
+          </ul>
+        </section>
+
+        <section id="cv">
+          <h2>CV</h2>
+          <p>
+            Upload a PDF to the repository (for example <code>files/cv.pdf</code>) and link it here.
+          </p>
+          <p>
+            <a class="btn btn-outline-dark btn-sm" href="files/cv.pdf">Download CV (PDF)</a>
+          </p>
+          <p class="small text-secondary">Until you add <code>files/cv.pdf</code>, this link will show a 404 on GitHub Pages—that is expected.</p>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <footer class="site-footer py-4 px-4 text-center">
+    <div class="container small">
+      © <span id="y"></span> Your Name · Hosted on GitHub Pages
+    </div>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
