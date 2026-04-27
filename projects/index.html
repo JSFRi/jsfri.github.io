@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects — Tianru Zhang</title>
+  <meta name="description" content="Projects by Tianru Zhang">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="../css/site.css" rel="stylesheet">
+</head>
+<body class="bg-white">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top site-navbar">
+    <div class="container-fluid px-3 px-lg-4">
+      <a class="navbar-brand fw-semibold" href="../#page-top">Tianru Zhang</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNav" aria-controls="topNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="topNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small text-uppercase gap-lg-2">
+          <li class="nav-item"><a class="nav-link" href="../#introduction">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="./">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="../#publications">Publications</a></li>
+          <li class="nav-item"><a class="nav-link" href="../#cv">CV</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container pt-5">
+    <div class="pt-4 pb-2">
+      <h1 class="mb-2">Projects</h1>
+      <p class="text-secondary mb-0">
+        A collection of selected projects. Each project has its own page under <code>/projects/&lt;slug&gt;/</code>.
+      </p>
+    </div>
+
+    <div class="row g-3 py-3">
+      <div class="col-md-6">
+        <div class="card h-100 card-hover">
+          <div class="card-body">
+            <h2 class="h5 mb-2">ReStore</h2>
+            <p class="text-secondary mb-3">RL-based data migration in multi-tier storage systems.</p>
+            <a class="btn btn-outline-dark btn-sm" href="restore/">Open</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card h-100 card-hover">
+          <div class="card-body">
+            <h2 class="h5 mb-2">InfoHier</h2>
+            <p class="text-secondary mb-3">Hierarchical information extraction via encoding and embedding.</p>
+            <a class="btn btn-outline-dark btn-sm" href="infohier/">Open</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card h-100 card-hover">
+          <div class="card-body">
+            <h2 class="h5 mb-2">ProbToE</h2>
+            <p class="text-secondary mb-3">Probabilistic Tree of Embeddings for uncertainty-aware long-horizon video reasoning.</p>
+            <a class="btn btn-outline-dark btn-sm" href="probtoe/">Open</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer py-4 px-4 text-center">
+    <div class="container small">
+      © <span id="y"></span> Tianru Zhang · <a href="../">Home</a>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+
