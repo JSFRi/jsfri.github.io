@@ -66,14 +66,7 @@
 
         <h2 class="h5 mt-4">Key figures</h2>
         <figure class="mb-4">
-          <div class="ratio ratio-16x9 border rounded overflow-hidden bg-light">
-            <object data="MTS-DBMS+RL.pdf" type="application/pdf" width="100%" height="100%">
-              <div class="p-3">
-                <p class="mb-2"><strong>Figure (PDF)</strong></p>
-                <a href="MTS-DBMS+RL.pdf">Open workflow figure</a>
-              </div>
-            </object>
-          </div>
+          <img class="img-fluid rounded border bg-white" src="MTS-DBMS+RL.png" alt="Workflow of ReStore with RL agents managing migrations">
           <figcaption class="small text-secondary mt-2">
             Workflow of ReStore, where RL agents manage page migrations in a multi-tiered storage system. Upon an I/O request, the page is served from its current tier,
             while ReStore decides in the background whether migration is needed based on RL agents and state values.
@@ -81,22 +74,7 @@
         </figure>
 
         <figure class="mb-4">
-          <div class="ratio ratio-16x9 border rounded overflow-hidden bg-light mb-2">
-            <object data="legend_tight_new.pdf" type="application/pdf" width="100%" height="100%">
-              <div class="p-3">
-                <p class="mb-2"><strong>Figure (PDF)</strong></p>
-                <a href="legend_tight_new.pdf">Open legend figure</a>
-              </div>
-            </object>
-          </div>
-          <div class="ratio ratio-16x9 border rounded overflow-hidden bg-light">
-            <object data="Results_real_traces.pdf" type="application/pdf" width="100%" height="100%">
-              <div class="p-3">
-                <p class="mb-2"><strong>Figure (PDF)</strong></p>
-                <a href="Results_real_traces.pdf">Open results figure</a>
-              </div>
-            </object>
-          </div>
+          <img class="img-fluid rounded border bg-white" src="Results_real_traces.png" alt="Normalized latency results under benchmarks and real traces">
           <figcaption class="small text-secondary mt-2">
             ReStore achieves the lowest normalized latency (relative to <em>Oracle</em>) under standard benchmarks and real-world traces, consistently outperforming all other baselines.
           </figcaption>
