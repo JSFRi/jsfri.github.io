@@ -21,7 +21,8 @@
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small text-uppercase gap-lg-2">
           <li class="nav-item"><a class="nav-link" href="../../#introduction">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="../">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="../../#publications">Publications</a></li>
+          <li class="nav-item"><a class="nav-link" href="../../news/">News</a></li>
+          <li class="nav-item"><a class="nav-link" href="../../publications/">Publications</a></li>
           <li class="nav-item"><a class="nav-link" href="../../#cv">CV</a></li>
         </ul>
       </div>
@@ -36,6 +37,14 @@
 
     <div class="row g-4 py-3">
       <div class="col-lg-8">
+        <figure class="mb-4">
+          <img class="img-fluid rounded border bg-white" src="MTS-DBMS+RL.png" alt="Workflow of ReStore with RL agents managing migrations">
+          <figcaption class="small text-secondary mt-2">
+            Workflow of ReStore, where RL agents manage page migrations in a multi-tiered storage system. Upon an I/O request, the page is served from its current tier,
+            while ReStore decides in the background whether migration is needed based on RL agents and state values.
+          </figcaption>
+        </figure>
+        
         <h2 class="h5">Overview</h2>
         <p>
           With the development of storage technologies, a wide variety of storage devices with different performance characteristics and cost profiles have emerged.
@@ -65,14 +74,6 @@
         </ul>
 
         <h2 class="h5 mt-4">Key figures</h2>
-        <figure class="mb-4">
-          <img class="img-fluid rounded border bg-white" src="MTS-DBMS+RL.png" alt="Workflow of ReStore with RL agents managing migrations">
-          <figcaption class="small text-secondary mt-2">
-            Workflow of ReStore, where RL agents manage page migrations in a multi-tiered storage system. Upon an I/O request, the page is served from its current tier,
-            while ReStore decides in the background whether migration is needed based on RL agents and state values.
-          </figcaption>
-        </figure>
-
         <figure class="mb-4">
           <img class="img-fluid rounded border bg-white" src="Results_real_traces.png" alt="Normalized latency results under benchmarks and real traces">
           <figcaption class="small text-secondary mt-2">

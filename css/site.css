@@ -96,7 +96,8 @@ section[id] {
 }
 
 .pub-item,
-.talk-item {
+.talk-item,
+.news-item {
   margin-bottom: 1.25rem;
 }
 
@@ -109,6 +110,13 @@ section[id] {
 .talk-item .meta {
   font-size: 0.9rem;
   color: var(--text-muted-custom);
+}
+
+.news-item .news-date {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  margin-right: 0.35rem;
+  white-space: nowrap;
 }
 
 footer.site-footer {
