@@ -36,34 +36,54 @@
     </div>
 
     <div class="row g-4 py-3">
-      <div class="col-lg-7">
-        <h2 class="h5">Abstract</h2>
-        <p>
-          Processing raw video sequences for long-horizon tasks is computationally intractable due to massive temporal redundancy and high dimensionality.
-          Consequently, high-fidelity reasoning and planning in long-form video understanding require compact, abstracted representations of the internal world state.
-          Current state-of-the-art frameworks address this by constructing a deterministic “tree of captions”, which compresses hierarchical video segments into textual descriptions.
-          However, this early captioning approach introduces a severe information bottleneck; it is inherently lossy, discards critical visual nuances,
-          and fails to capture the inherent semantic ambiguity of the underlying video data.
-        </p>
-        <p>
-          To resolve this, we propose a probabilistic tree of embeddings, which models hierarchical video segments as multivariate Gaussian distributions directly in the embedding space.
-          This preserves visual uncertainty and delays decoding until task-specific reasoning is required. While effective, estimating these distributions can be computationally heavy.
-          To eliminate this bottleneck, we introduce an amortized inference adapter trained via Conditional Flow Matching.
-          Through self-supervised learning on raw video sequences, the adapter learns the continuous vector fields of frame dispersion to capture true aleatoric uncertainty.
-          At inference, this lightweight network instantly maps a deterministic video chunk context into fully parameterized Gaussian distributions, entirely bypassing stochastic sampling.
-          This approach provides a mathematically rigorous, highly scalable foundation for uncertainty-aware world models capable of complex, long-horizon video reasoning.
-        </p>
-      </div>
-
-      <div class="col-lg-5">
-        <figure class="mb-3">
-          <img class="img-fluid rounded border" src="image.png" alt="Conceptual example of probabilistic tree of embeddings">
+      <div class="col-lg-8">
+        <figure class="mb-4">
+          <img class="img-fluid rounded border bg-white" src="image.png" alt="Conceptual probabilistic tree of embeddings">
           <figcaption class="small text-secondary mt-2">
-            Conceptual example of the probabilistic tree of embeddings. The leaf node distributions are the sharpest with the variance increasing as we move up the tree.
-            <!-- The video example is taken from Chen et al. [3]. -->
+            Conceptual ProbToE tree: leaf nodes are sharp distributions over local segments; variance grows toward the root
+            as segments are merged in embedding space.
           </figcaption>
         </figure>
 
+        <h2 class="h5">Overview</h2>
+        <p>
+          Processing raw video sequences for long-horizon tasks is computationally intractable due to massive temporal redundancy and high dimensionality.
+          Consequently, high-fidelity reasoning and planning in long-form video understanding require compact, abstracted representations of the internal world state.
+          Current state-of-the-art frameworks address this by constructing a <em>tree of captions</em>: cut the video into chunks, caption each segment, then build a hierarchy by clustering. 
+          Early captioning compresses well, but it is lossy, discards visual nuance, and fixed chunks can break scene continuity.
+          Frames within a segment also vary, so a single deterministic summary cannot capture ambiguity.
+        </p>
+        <p>
+          ProbToE instead builds a <em>probabilistic tree of embeddings</em>, 
+          where each node is a continuous distribution in embedding space (e.g., multivariate Gaussian \((\mu, \Sigma)\) or von Mises–Fisher \((\mu, \kappa)\)), preserving uncertainty until task-specific reasoning is needed.
+          Estimating these distributions with Monte-Carlo sampling or averaging is precise but heavy.
+          ProbToE therefore uses <em>conditional flow matching</em>: learn a velocity field from noise toward data,
+          and condition the network on the frame index \(i\) as \(v_\theta(x, t, i)\) so temporal structure is respected. 
+          At inference, a lightweight adapter maps chunk context to fully parameterized distributions without stochastic sampling.
+        </p>
+
+        <h2 class="h5 mt-4">Highlights</h2>
+        <ul>
+          <li><strong>Motivation</strong>: Tree-of-captions hierarchies are lossy and rigid; video chunks need continuous, uncertainty-aware representations.</li>
+          <li><strong>Representation</strong>: Hierarchical embedding distributions (Gaussian / vMF) built with divisive clustering.</li>
+          <li><strong>Inference</strong>: Conditional flow matching amortized over frame index for scalable distribution estimation.</li>
+        </ul>
+
+        <h2 class="h5 mt-4">Key figures</h2>
+        <figure class="mb-4">
+          <img class="img-fluid rounded border bg-white" src="tree_of_captions.png" alt="Tree of captions hierarchical segmentation over time">
+          <figcaption class="small text-secondary mt-2">
+            Tree of captions baseline: video chunks are captioned and hierarchically clustered over time—compact, but an early information bottleneck.
+          </figcaption>
+        </figure>
+        <figure class="mb-4">
+          <img class="img-fluid rounded border bg-white" src="probtoe_tree.png" alt="ProbToE tree of distribution nodes over video frames">
+          <figcaption class="small text-secondary mt-2">
+            ProbToE replaces captions with distribution nodes over embeddings, enabling uncertainty-aware hierarchical video reasoning.
+          </figcaption>
+        </figure>
+      </div>
+      <div class="col-lg-4">
         <div class="card">
           <div class="card-body">
             <h2 class="h6 text-uppercase text-secondary fw-semibold mb-3">Links</h2>
@@ -90,4 +110,3 @@
   </script>
 </body>
 </html>
-
