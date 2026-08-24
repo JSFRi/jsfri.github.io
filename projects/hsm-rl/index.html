@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HSM-RL — Project</title>
+  <meta name="description" content="HSM-RL: reinforcement learning for hierarchical storage management">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="../../css/site.css" rel="stylesheet">
+</head>
+<body class="bg-white">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top site-navbar">
+    <div class="container-fluid px-3 px-lg-4">
+      <a class="navbar-brand fw-semibold" href="../../#page-top">Tianru Zhang</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNav" aria-controls="topNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="topNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small text-uppercase gap-lg-2">
+          <li class="nav-item"><a class="nav-link" href="../../#introduction">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="../">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="../../news/">News</a></li>
+          <li class="nav-item"><a class="nav-link" href="../../publications/">Publications</a></li>
+          <li class="nav-item"><a class="nav-link" href="../../#cv">CV</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container pt-5">
+    <div class="pt-4 pb-2">
+      <h1 class="mb-2">HSM-RL</h1>
+      <p class="text-secondary mb-0">Efficient Hierarchical Storage Management Empowered by Reinforcement Learning.</p>
+    </div>
+
+    <div class="row g-4 py-3">
+      <div class="col-lg-8">
+        <figure class="mb-4">
+          <img class="img-fluid rounded border bg-white" src="Flow_Chart.png" alt="Workflow of the RL-based HSM-RL migration policy">
+          <figcaption class="small text-secondary mt-2">
+            Workflow of HSM-RL on a three-tier hierarchical storage system. The controller decides upgrades from access patterns (step 1),
+            while per-tier RL agents update cost functions (steps 2–3) to place files more efficiently.
+          </figcaption>
+        </figure>
+
+        <h2 class="h5">Overview</h2>
+        <p>
+          Hierarchical storage systems (HSS) pool heterogeneous devices—fast but small SSDs, slower HDDs, and large object stores—
+          into one storage hierarchy. The challenge is <em>where</em> to place each file as access patterns change: hot data should
+          live in fast tiers, cold data in cheaper capacity, but naive or static policies waste bandwidth on unnecessary migrations
+          and fail to adapt when workloads shift.
+        </p>
+        <p>
+          HSM-RL treats file placement as an online control problem. Each tier is associated with an RL agent whose state captures
+          average file temperature, size-weighted temperature, and queueing delay. A fuzzy rule-based function approximates the
+          tier cost, and agents update their parameters with TD(λ) learning. A file is upgraded only when the predicted
+          system response after the move is lower than leaving it in place.
+        </p>
+        <p>
+          In TKDE paper we evaluate the policy in both a simulator and a live cloud HSS, showing about 5–6&times; fewer transfers
+          than rule-based baselines with comparable memory cost. In the later ESWA paper we extend the framework
+          to scientific workloads including microscopy, CFD meshes, 1000 Genomes sequences, and phenotypic screening. By encapsulating dataset-specific
+          <em>interestingness</em> features into the state variables of RL agents, we achieve lower response time than LRU, LFU, k-means, and
+          even prefixed min/max policies.
+        </p>
+
+        <h2 class="h5 mt-4">Highlights</h2>
+        <ul>
+          <li><strong>Problem</strong>: Adaptive file placement across storage tiers under changing access patterns.</li>
+          <li><strong>Approach</strong>: Per-tier RL agents with fuzzy value approximation and TD(&lambda;) updates.</li>
+          <li><strong>Results</strong>: Far fewer migrations than rule-based policies (TKDE); faster scientific analysis pipelines vs. LRU/LFU/k-means (ESWA).</li>
+        </ul>
+
+        <h2 class="h5 mt-4">Key figures</h2>
+        <figure class="mb-4">
+          <img class="img-fluid rounded border bg-white" src="HSS_RL.png" alt="Three-tier HSS with per-tier RL agents">
+          <figcaption class="small text-secondary mt-2">
+            Three-tier HSS with one RL agent per tier: incoming requests trigger migrations, then agents update from observed response.
+          </figcaption>
+        </figure>
+        <figure class="mb-4">
+          <img class="img-fluid rounded border bg-white" src="Num_transfer.png" alt="Number of transfers and estimated system response time under each policy">
+          <figcaption class="small text-secondary mt-2">
+            Average number of transfers and estimated system response time under each policy (initial temperature 0.4–0.6, uniformly random requests). RL policies reach a similar response with far fewer migrations (TKDE).
+          </figcaption>
+        </figure>
+        <figure class="mb-4">
+          <img class="img-fluid rounded border bg-white" src="Running_time_scientific.png" alt="System response time on phenotypic screening under HSM-RL and baselines">
+          <figcaption class="small text-secondary mt-2">
+            System response time on the first-phase phenotypic screening under RL vs. random, LRU, LFU, k-means, and min-intensity baselines (ESWA). The random-placement panel uses a different y-axis scale.
+          </figcaption>
+        </figure>
+      </div>
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="h6 text-uppercase text-secondary fw-semibold mb-3">Links</h2>
+            <ul class="list-unstyled mb-0">
+              <li class="mb-2"><a href="https://github.com/JSFRi/HSM-RL.git" rel="noopener noreferrer"><i class="bi bi-github me-2"></i>Code</a></li>
+              <li class="mb-2"><a href="https://doi.org/10.1109/TKDE.2022.3176753" rel="noopener noreferrer"><i class="bi bi-file-earmark-text me-2"></i>TKDE paper</a></li>
+              <li class="mb-2"><a href="https://doi.org/10.1016/j.eswa.2023.121443" rel="noopener noreferrer"><i class="bi bi-file-earmark-text me-2"></i>ESWA paper</a></li>
+              <li class="mb-2"><a href="https://github.com/JSFRi/MSD-RLHSS.git" rel="noopener noreferrer"><i class="bi bi-github me-2"></i>MSD-RLHSS code</a></li>
+              <li class="mb-0"><a href="https://doi.org/10.1109/ICDE55515.2023.00361" rel="noopener noreferrer"><i class="bi bi-box-arrow-up-right me-2"></i>ICDE extended abstract</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer py-4 px-4 text-center">
+    <div class="container small">
+      © <span id="y"></span> Tianru Zhang · <a href="../">All projects</a>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
